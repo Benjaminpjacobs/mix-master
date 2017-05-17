@@ -1,12 +1,8 @@
 class SongsController < ApplicationController
+  before_action :set_song, only: [:edit, :show, :destroy]
 
   def index
-    # if params[:artist_id]
-    #   @artist = Artist.find(params[:artist_id])  
-    #   @songs = @artist.songs.order('title ASC')
-    # else
-      @songs = Song.order('title ASC')
-    # end
+    @songs = Song.order('title ASC')
   end
 
   def new
@@ -25,12 +21,10 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find(params[:id])
   end
 
   def edit
-    @artist = Song.find(params[:id]).artist
-    @song = Song.find(params[:id])
+    @artist = @song.artist
   end
 
   def update
@@ -39,16 +33,18 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    song = Song.find(params[:id])
-    artist = song.artist
-    song.destroy
+    @song.destroy
 
-    redirect_to artist_songs_path(artist)
+    redirect_to songs_path
   end
 
   private
 
     def song_params
       params.require(:song).permit(:title)
+    end
+
+    def set_song
+      @song = Song.find(params[:id])
     end
 end
