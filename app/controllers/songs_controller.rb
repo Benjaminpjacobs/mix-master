@@ -1,12 +1,12 @@
 class SongsController < ApplicationController
 
   def index
-    if params[:artist_id]
-      @artist = Artist.find(params[:artist_id])  
-      @songs = @artist.songs.order('title ASC')
-    else
+    # if params[:artist_id]
+    #   @artist = Artist.find(params[:artist_id])  
+    #   @songs = @artist.songs.order('title ASC')
+    # else
       @songs = Song.order('title ASC')
-    end
+    # end
   end
 
   def new

@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
+
   resources :artists do
-    resources :songs, only: [:new, :create, :index]
-    #   member do
-    #   get :songs
-    #   put :songs
-    # end
-    
+    resources :songs, module: :artists
   end
 
-  resources :songs, except: [:new, :create]  
+  resources :songs
   
 end

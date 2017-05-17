@@ -4,8 +4,10 @@ class ArtistsController < ApplicationController
     @artists = Artist.all
   end
 
-  def songs_index
-    
+  def songs
+    # byebug
+    @artist = Artist.find(params[:id])  
+    @songs = @artist.songs.order('title ASC')
   end
 
   def new
