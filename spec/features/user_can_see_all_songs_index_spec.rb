@@ -15,7 +15,7 @@ RSpec.feature "When user views all songs" do
     expect(page.find('li:nth-child(1)')).to have_content('Exodus')
     expect(page.find('li:nth-child(2)')).to have_content('Jammin')
     expect(page.find('li:nth-child(3)')).to have_content('No Woman No Cry')
-    expect(page.find('li:nth-child(4)')).to have_content('One Love')
+    expect(page.find('li:nth-child(4)')).to have_content(song1.title)
 
 
     expect(page).to have_link song1.title, href: song_path(song1)

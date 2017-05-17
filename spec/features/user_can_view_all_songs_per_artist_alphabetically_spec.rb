@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature "User visits artist page and clicks view songs" do
   scenario "they see them all alphabetically" do
     artist = create(:artist)
-    song1 = create(:song)
-    song2 = create(:song, title: "No Woman No Cry")
-    song3 = create(:song, title: "Exodus")
-    song4 = create(:song, title: "Jammin")
+    song1 = create(:song, title: "One Love", artist_id: artist.id)
+    song2 = create(:song, title: "No Woman No Cry", artist_id: artist.id)
+    song3 = create(:song, title: "Exodus", artist_id: artist.id)
+    song4 = create(:song, title: "Jammin", artist_id: artist.id)
 
     visit artist_path(artist)
     click_on "View songs"
