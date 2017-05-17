@@ -44,9 +44,8 @@ class SongsController < ApplicationController
     song.destroy
 
     redirect_to artist_songs_path(artist)
-  
   end
-  
+
   private
 
     def song_params
