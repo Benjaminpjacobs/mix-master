@@ -4,6 +4,10 @@ class ArtistsController < ApplicationController
     @artists = Artist.all
   end
 
+  def songs_index
+    
+  end
+
   def new
     @artist = Artist.new
   end
@@ -36,6 +40,7 @@ class ArtistsController < ApplicationController
     artist.destroy
     redirect_to artists_path
   end
+
   private
 
   def artist_params

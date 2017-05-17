@@ -1,8 +1,12 @@
 class SongsController < ApplicationController
 
   def index
-    @artist = Artist.find(params[:artist_id])  
-    @songs = @artist.songs.order('title ASC')
+    if params[:artist_id]
+      @artist = Artist.find(params[:artist_id])  
+      @songs = @artist.songs.order('title ASC')
+    else
+      @songs = Song.order('title ASC')
+    end
   end
 
   def new
@@ -34,6 +38,15 @@ class SongsController < ApplicationController
     redirect_to song_path(@song)
   end
 
+  def destroy
+    song = Song.find(params[:id])
+    artist = song.artist
+    song.destroy
+
+    redirect_to artist_songs_path(artist)
+  
+  end
+  
   private
 
     def song_params
