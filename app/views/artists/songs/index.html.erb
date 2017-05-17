@@ -1,10 +1,10 @@
 <ul>
-    <% @songs.each do |song| %>
-        <li>
-            <%= link_to song.title, song_path(song) %>
-                <%= link_to "Delete", artist_song_path(@artist, song), method: :delete %>
+<% @songs.each do |song| %>
+<li>
+<%= link_to song.title, song_path(song) %>
+<%= link_to "Delete", artist_song_path(@artist, song), method: :delete %>
 
-        </li>
-        <%end%>
+</li>
+<%end%>
 
 </ul>

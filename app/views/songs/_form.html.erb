@@ -1,0 +1,7 @@
+<%= form_for(@song) do |f| %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.submit @song.new_record? ? "Create Song" : "Update song" %>
+
+<% end %>
