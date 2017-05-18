@@ -25,8 +25,13 @@ class ArtistsController < ApplicationController
   end
 
   def update
-    @artist = Artist.update(artist_params)
-    redirect_to artist_path(@artist)
+    if Artist.new(artist_params).valid?
+      @artist = Artist.update(artist_params)
+      redirect_to artist_path(@artist)
+    else
+      @artist = Artist.find(params[:id])
+      render :edit
+    end
   end
 
   def destroy
