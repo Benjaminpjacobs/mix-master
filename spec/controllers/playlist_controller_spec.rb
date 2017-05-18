@@ -44,11 +44,11 @@ RSpec.describe PlaylistsController, type: :controller do
         expect(playlist.name).to eq("New name")
       end
       
-      # it "assigns the requested playlist as @playlist" do
-      #   playlist = create(:playlist)
-      #   put :update, params: {:id => playlist.to_param, :playlist => {name: "New name", image_path: playlist.image_path}}
-      #   expect(assigns(:playlist)).to eq(playlist)
-      # end
+      it "assigns the requested playlist as @playlist" do
+        playlist = create(:playlist)
+        put :update, params: {:id => playlist.to_param, :playlist => attributes_for(:playlist, name: "New name")}
+        expect(assigns(:playlist)).to eq([Playlist.last])
+      end
       
       it "redirects to the playlist" do 
       playlist = create(:playlist)
