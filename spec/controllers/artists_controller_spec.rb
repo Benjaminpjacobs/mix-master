@@ -82,7 +82,7 @@ RSpec.describe ArtistsController, type: :controller do
       it "assigns the requested artist as @artist" do
         artist = create(:artist)
         put :update, params: {:id => artist.to_param, :artist => {name: "New name", image_path: artist.image_path}}
-        expect(assigns(:artist)).to eq([Artist.last])
+        expect(assigns(:artist)).to eq(artist)
       end
       
       it "redirects to the artist" do 
